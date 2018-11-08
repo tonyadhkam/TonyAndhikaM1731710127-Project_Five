@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
 import { Ingredient } from './ingredient.model';
+import { ShopingListService } from '../shoping-list.service';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -12,9 +13,9 @@ export class ShoppingEditComponent implements OnInit {
   // yang diteukan di template, sehingga Anda dapat mengakses properti dan metodenya
   @ViewChild('nameInput') nameRef:ElementRef;
   @ViewChild('amountInput') amountRef:ElementRef;
-  @Output() ingredientAdded= new EventEmitter<Ingredient>();
+  // @Output() ingredientAdded= new EventEmitter<Ingredient>();
 
-  constructor() { }
+  constructor(private slsService:ShopingListService) { }
 
   ngOnInit() {
   }
@@ -23,7 +24,10 @@ export class ShoppingEditComponent implements OnInit {
     const ingName=this.nameRef.nativeElement.value;
     const ingAmount=this.amountRef.nativeElement.value;
     const newIngredient= new Ingredient(ingName, ingAmount);
-    this.ingredientAdded.emit(newIngredient);
+    this.slsService.addIngredient(newIngredient);
+   // this.ingredientAdded.emit(newIngredient);
+   // console.log(this.ingredientAdded);
+   // Testability
   }
 
 }
