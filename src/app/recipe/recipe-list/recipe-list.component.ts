@@ -1,6 +1,7 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Recipe } from '../recipe.model';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { RecipeService } from '../recipe.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-list',
@@ -9,23 +10,20 @@ import { RecipeService } from '../recipe.service';
 })
 export class RecipeListComponent implements OnInit {
 
-  //@Output() recipeWasSelected=new EventEmitter<Recipe>();
   recipes:Recipe[];
-  //property:class recipe
-  //recipes=[
-  //  new Recipe('A Test Recipe','This is simply a test',
-  //  'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg'),
-  //  new Recipe('A Test Recipe two','This is simply a test','../src/app/img/nasi_padang.jpg'),
-  //];
 
-  constructor(private recipeService:RecipeService) { }
+  constructor(private recipeService:RecipeService,
+              private router:Router,
+              private route:ActivatedRoute) { }
 
   ngOnInit() {
-    this.recipes= this.recipeService.getRecipes();
+    this.recipes=this.recipeService.getRecipes();
   }
 
-  // onRecipeSelected(recipe:Recipe){
-  //   this.recipeWasSelected.emit(recipe);
-  // }
+  //dikarenakan kita butuh method navigate maka kita import Router pada @angular/router
+  //setelah kita import maka kita panggil pertama kali dengan constructor
+  onNewRecipe(){
+    this.router.navigate(['new'],{relativeTo:this.route})
+  }
 
 }

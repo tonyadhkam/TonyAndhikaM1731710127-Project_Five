@@ -1,47 +1,49 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule} from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { RecipeComponent } from './recipe/recipe.component';
-import { ShopingListComponent } from './shoping-list/shoping-list.component';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
-//tambah code berikut
 import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component';
 import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
-
-//tambah code berikut (2)
+import { FooterComponent } from './footer/footer.component';
 import { RecipeItemComponent } from './recipe/recipe-list/recipe-item/recipe-item.component';
 
-//tambah code berikut (3)
-import { ShoppingEditComponent } from './shoping-list/shopping-edit/shopping-edit.component';
-import { DropdownDirective } from './shared/dropdown.directive';
-import { ShopingListService } from './shoping-list/shoping-list.service';
-
+import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
+import { DropdownDirective } from "./shared/dropdown.directive";
+import { ShoppingListService } from './shopping-list/shopping-list.service';
+import { RecipeStartComponent } from './recipe/recipe-start/recipe-start.component';
+import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    RecipeComponent,
-    ShopingListComponent,
-    
-
-    //tambah code berikut
-    RecipeListComponent,
-    RecipeDetailComponent,
-
-    //tambah code berikut (2)
-    RecipeItemComponent,
-
-    //tambah code (3)
-    ShoppingEditComponent,
-    DropdownDirective
-],
-  imports: [
-    BrowserModule
-  ],
-  providers: [ShopingListService],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      HeaderComponent,
+      ShoppingListComponent,
+      ShoppingEditComponent,
+      RecipeComponent,
+      RecipeListComponent,
+      RecipeDetailComponent,
+      RecipeItemComponent,
+      FooterComponent,
+      DropdownDirective,
+      RecipeStartComponent,
+      RecipeEditComponent,
+   ],
+   imports: [
+      BrowserModule,
+      FormsModule,
+      HttpModule,
+      AppRoutingModule
+   ],
+   providers: [ShoppingListService],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }
